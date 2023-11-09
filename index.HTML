@@ -1,0 +1,167 @@
+<html> 
+<title> Rock, Paper, Scissors!</title>
+
+<head> 
+<style> 
+
+body {  text-align: center;
+        font-size: 60px;
+
+        display: grid; 
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 100px;
+        gap: 10px;
+
+        height: 99vh;
+        width: 99vw;}
+
+.top {grid-row-start: 1; 
+        grid-row-end: 2;    
+        grid-column-start: 1; 
+        grid-column-end: 4;
+          color: red; }
+ 
+.img1 {grid-row-start: 2; 
+      grid-row-end: 3; 
+      grid-column-start: 2; 
+      grid-column-end: 3;}
+
+.img2 {grid-row-start: 3;  
+      grid-row-end: 4; 
+      grid-column-start: 1; 
+      grid-column-end: 2; } 
+      
+.my {grid-row-start: 4; 
+    grid-row-end: 5; 
+    grid-column-start: 1; 
+    grid-column-end: 2;  }
+
+.img3 {grid-row-start: 3; 
+      grid-row-end: 4; 
+      grid-column-start: 3; 
+      grid-column-end: 4; }
+
+.your {grid-row-start: 4; 
+      grid-row-end: 5; 
+      grid-column-start: 3; 
+      grid-column-end: 4;}
+
+.message {grid-row-start: 4; 
+         grid-row-end: 5;
+         grid-column-start: 1; 
+         grid-column-end: 4; 
+         color: #00008a; }
+
+.rockB   {grid-row-start: 6; 
+         grid-row-end: 7; 
+         grid-column-start: 1; 
+         grid-column-end: 2;}
+
+.paperB  {grid-row-start: 6; 
+          grid-row-end: 7; 
+          grid-column-start: 2; 
+          grid-column-end: 3; }
+
+.scissorsB{grid-row-start: 6; 
+            grid-row-end: 7; 
+            grid-column-start: 3; 
+            grid-column-end: 4; }
+
+.bottom {grid-row-start: 8; 
+        grid-row-end: 9; 
+        grid-column-start: 1; 
+        grid-column-end: 4; }
+</style>
+
+<script> 
+
+var a = Math.round(Math.floor(Math.random()*3)+1); 
+var b = 0
+var c = 0 
+
+function clickRock() { 
+ document.getElementById("user").src="rockchoice";
+ a = Math.floor(Math.random()*3)+1; 
+if(a==1) {document.getElementById("code").src="rockchoice"; document.getElementById("outcome").innerHTML = "It's a tie! We rock!"; document.getElementById("outcome").style = "color: purple;" }
+else if(a==2) {document.getElementById("code").src="scissorschoice.png"; document.getElementById("outcome").innerHTML = "Rock beats scissors! You win..."; document.getElementById("outcome").style = "color: green;"; b++; document.getElementById("player").innerHTML = "You: <br>" + b;}
+else {document.getElementById("code").src="paperchoice.jpg"; document.getElementById("outcome").innerHTML = "Ha! Paper beats rock! I win!";  document.getElementById("outcome").style = "color: blue;"; c++; document.getElementById("comp").innerHTML = "Me: <br>" + c; }
+}
+
+function clickPaper() {
+ document.getElementById("user").src="paperchoice.jpg";
+a = Math.floor(Math.random()*3)+1; 
+if(a==1) {document.getElementById("code").src="rockchoice"; document.getElementById("outcome").innerHTML = "No! You won this round :(";  document.getElementById("outcome").style = "color: green;"; b++; document.getElementById("player").innerHTML = "You: <br>" + b;}
+else if(a==2) {document.getElementById("code").src="scissorschoice.png"; document.getElementById("outcome").innerHTML = "YAAY, scissors cuts paper! I win!";  document.getElementById("outcome").style = "color: blue;"; c++; document.getElementById("comp").innerHTML = "Me: <br>" + c;}
+else {document.getElementById("code").src="paperchoice.jpg"; document.getElementById("outcome").innerHTML = "It's a tie! GG!"; document.getElementById("outcome").style = "color: purple;" }
+}
+
+function clickScissors() {
+    a = Math.floor(Math.random()*3)+1; 
+ document.getElementById("user").src="scissorschoice.png";
+if(a==1) {document.getElementById("code").src="rockchoice"; document.getElementById("outcome").innerHTML = "YAAY! I win, I'm the best.";  document.getElementById("outcome").style = "color: blue;"; c++; document.getElementById("comp").innerHTML = "Me: <br>" + c;}
+else if(a==2) {document.getElementById("code").src="scissorschoice.png"; document.getElementById("outcome").innerHTML = "Aww, It's a tie!"; document.getElementById("outcome").style = "color: purple;" }
+else {document.getElementById("code").src="paperchoice.jpg"; document.getElementById("outcome").innerHTML = "NO! Scissors beats paper! You win..."; document.getElementById("outcome").style = "color: green;"; b++; document.getElementById("player").innerHTML = "You: <br>" + b;}
+}
+
+function reset () {
+if(b>c) {document.getElementById("outcome").innerHTML = "You won this time, play again soon!"; document.getElementById("outcome").style = "color: pink;"; }
+if(c>b) {document.getElementById("outcome").innerHTML = "I won this time, play again soon!"; document.getElementById("outcome").style = "color: pink;";}
+document.getElementById("user").src = "question.png";
+document.getElementById("code").src = "question.png"; 
+}
+
+</script>
+</head>
+
+<body> 
+    <body style="background-color:#808080"> 
+
+<div class="top"> 
+    <h4>Let's Play Rock, Paper, Scissors!</h4>
+</div>
+
+<div class="my" id="comp"> 
+<h5> Me: <br> 0 </h5>
+</div>
+
+<div class = "img1">
+    <img src="rps.jpg" width="400px" height="200px" style="border: solid black;"> 
+</div>
+
+<div class = "img2"> 
+    <img src="question.png" id="code" width="200px" height="200px" style="border: solid white;"> 
+</div>
+
+<div class = "img3">
+    <img src="question.png" id="user" width="200px" height="200px" style="border: solid white;">
+</div>
+
+<div class="your" id="player"> 
+<h5> You: <br> 0 </h5>
+</div>
+
+<br> <br> 
+<div class="message" id="outcome">
+<h6> <br> <br> Who won? </h6>
+</div> 
+
+<div class="rockB"> 
+<button id="rock" style="width: 200px; height: 100px; font-size: 38px;" onclick="clickRock();"> <h3>Rock </h3> </button>
+</div>
+
+<div class="paperB"> 
+<button id="paper" style="width: 200px; height: 100px; font-size: 38px;" onclick="clickPaper();"> <h3> Paper </h3></button>
+</div>
+
+<div class="scissorsB">
+<button id="scissors" style="width: 200px; height: 100px; font-size: 38px;" onclick="clickScissors();"> <h3>Scissors </h3> </button>
+<br> 
+</div>
+<br> <br>
+
+<div class="bottom">
+<button id="endGame" style="width: 400px; height: 100px; font-size: 38px;" onclick ="reset();"> I don't want to play anymore </button>
+</div>
+
+</body>  
+</html>
